@@ -39,16 +39,5 @@
         {
             throw new NotImplementedException();
         }
-
-        //Probably move this to a shared base as soon as any other implementations are added
-        //Probably should be in the interface as well
-        /// <summary>
-        /// 
-        /// </summary>
-        public void ClearBasket()
-        {
-            //At the scale here it shouldn't really matter which approach is used - clear is probably the better default approach unless we expect the basket to become massive
-            itemBasket.Clear();
-        }
     }
 }
