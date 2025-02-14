@@ -9,13 +9,7 @@ namespace Checkout_Tests
         protected ICheckout? checkoutToTest;
 
         //Overrides need to populate checkoutToTest - any clean way to enforce this?
-        abstract public void CreateConcreteImplementationToTest();
-
-        [SetUp]
-        public void Setup()
-        {
-            CreateConcreteImplementationToTest();
-        }
+        abstract public void CreateConcreteImplementationToTest(Dictionary<string, SaleItem> itemCatalogue, Dictionary<string, MultiSpecial> availableSpecials);
 
         [Test]
         public void ScanInvalidItem()

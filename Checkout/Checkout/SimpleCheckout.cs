@@ -16,10 +16,10 @@
         internal Dictionary<string, MultiSpecial> AvailableSpecials { get; }
 
         /// <summary>
-        /// 
+        /// Standard constructor, sets all fields
         /// </summary>
-        /// <param name="itemCatalogue"></param>
-        /// <param name="availableSpecials"></param>
+        /// <param name="itemCatalogue">Pricing data for all purchasable items</param>
+        /// <param name="availableSpecials">Details of all special deals available</param>
         public SimpleCheckout(Dictionary<string, SaleItem> itemCatalogue, Dictionary<string, MultiSpecial> availableSpecials)
         {
             ItemCatalogue = itemCatalogue;
