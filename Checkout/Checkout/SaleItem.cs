@@ -7,8 +7,14 @@
     /// </summary>
     public class SaleItem
     {
+        /// <summary>
+        /// Unique string identifier for the item
+        /// </summary>
         public string SKU { get; }
 
+        /// <summary>
+        /// Price to charge for each instance of the item
+        /// </summary>
         public int Price { get; }
 
         /// <summary>
