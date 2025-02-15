@@ -1,9 +1,10 @@
-﻿namespace Checkout
+﻿
+namespace Checkout
 {
     /// <summary>
     /// Represents a special price for purchasing multiples of a given item
     /// </summary>
-    public class MultiSpecial
+    public class MultiSpecial : ISpecial
     {
         /// <summary>
         /// Unique string identifier for the applicable item
@@ -46,6 +47,22 @@
             SKU = sku;
             RequiredQuantity = requiredQuantity;
             SpecialPrice = specialPrice;
+        }
+
+        /// <inheritdoc />
+        public int ApplyToBasket(Dictionary<string, int> itemBasket)
+        {
+            if (itemBasket.ContainsKey(SKU))
+            {
+                int multipleFound = itemBasket[SKU] / RequiredQuantity;
+
+                //Consume the applicable items - so that if any other specials might apply to them in future each item can only be part of one special
+                itemBasket[SKU] = itemBasket[SKU] % RequiredQuantity;
+
+                return multipleFound * SpecialPrice;
+            }
+
+            return 0;
         }
     }
 }

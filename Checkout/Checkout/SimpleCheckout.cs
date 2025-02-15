@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace Checkout
+﻿namespace Checkout
 {
     /// <summary>
     /// Very basic implementation of the Checkout interface, aims to do the bare minimum to satisfy requirements - should become deprecated as newer versions are developed
@@ -17,21 +15,21 @@ namespace Checkout
 
             int runningTotal = 0;
 
-            foreach (KeyValuePair<string, int> item in itemBasket)
+            foreach (KeyValuePair<string, int> itemBasketEntry in itemBasket)
             {
                 //Check if there is an applicable special deal
-                if (AvailableSpecials.ContainsKey(item.Key))
+                if (AvailableSpecials.ContainsKey(itemBasketEntry.Key))
                 {
                     //Check how many times to apply the special price
-                    runningTotal += (item.Value / AvailableSpecials[item.Key].RequiredQuantity) * AvailableSpecials[item.Key].SpecialPrice;
+                    runningTotal += (itemBasketEntry.Value / AvailableSpecials[itemBasketEntry.Key].RequiredQuantity) * AvailableSpecials[itemBasketEntry.Key].SpecialPrice;
 
                     //Apply the normal price to the remainder
-                    runningTotal += (item.Value % AvailableSpecials[item.Key].RequiredQuantity) * ItemCatalogue[item.Key].Price;
+                    runningTotal += (itemBasketEntry.Value % AvailableSpecials[itemBasketEntry.Key].RequiredQuantity) * ItemCatalogue[itemBasketEntry.Key].Price;
                 }
                 else
                 {
                     //No applicable special so simply apply the normal price to each
-                    runningTotal += item.Value * ItemCatalogue[item.Key].Price;
+                    runningTotal += itemBasketEntry.Value * ItemCatalogue[itemBasketEntry.Key].Price;
                 }
             }
 

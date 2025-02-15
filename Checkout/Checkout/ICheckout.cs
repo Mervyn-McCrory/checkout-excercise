@@ -25,6 +25,7 @@
         //Also limits what kind of insanely huge prices can be supported, anything realistic SHOULD fit in an int
 
         //How might this be expanded in future?
+        //Cancel a sale and empty the basket?
         //Modify quantity of item already in the basket? (including removal)
         //Apply a price override to an item in the basket?
     }

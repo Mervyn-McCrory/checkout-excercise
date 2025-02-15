@@ -8,12 +8,12 @@ namespace Checkout
     public abstract class BaseCheckout
     {
         //Want a dictionary to easily index later
-        //Could store the itemdata directly OR just cross reference later via the identifier
+        //Could store the itemdata directly or just cross reference later via the identifier
         protected Dictionary<string, int> itemBasket;
 
         protected Dictionary<string, SaleItem> ItemCatalogue { get; }
 
-        //Another dictionary makes sense right now for indexing on the basic approach but will probably be replaced later
+        //Another dictionary makes sense right now for indexing on the basic approach but a simple array be more efficient if SimpleCheckout is no longer supported
         protected Dictionary<string, MultiSpecial> AvailableSpecials { get; }
 
         //Could potentially pass an object here strategy style that retrieves rules from whatever external source
