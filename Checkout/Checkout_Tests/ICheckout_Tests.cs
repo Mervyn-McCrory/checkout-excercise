@@ -92,9 +92,7 @@ namespace Checkout_Tests
 
             #endregion
 
-            //Nunit now recommends a new format for equal assertions, leave for now and update later
-
-            Assert.AreEqual(0, checkoutToTest.GetTotalPrice());
+            Assert.That(checkoutToTest.GetTotalPrice(), Is.EqualTo(0));
         }
 
         [Test]
@@ -115,7 +113,7 @@ namespace Checkout_Tests
 
             checkoutToTest.Scan("A");
 
-            Assert.AreEqual(1, checkoutToTest.GetTotalPrice());
+            Assert.That(checkoutToTest.GetTotalPrice(), Is.EqualTo(1));
         }
 
         [Test]
@@ -140,7 +138,7 @@ namespace Checkout_Tests
             checkoutToTest.Scan("B");
             checkoutToTest.Scan("C");
 
-            Assert.AreEqual(6, checkoutToTest.GetTotalPrice());
+            Assert.That(checkoutToTest.GetTotalPrice(), Is.EqualTo(6));
         }
 
         [Test]
@@ -165,7 +163,7 @@ namespace Checkout_Tests
             checkoutToTest.Scan("A");
             checkoutToTest.Scan("A");
 
-            Assert.AreEqual(4, checkoutToTest.GetTotalPrice());
+            Assert.That(checkoutToTest.GetTotalPrice(), Is.EqualTo(4));
         }
 
         [Test]
@@ -191,7 +189,7 @@ namespace Checkout_Tests
             checkoutToTest.Scan("A");
             checkoutToTest.Scan("A");
 
-            Assert.AreEqual(5, checkoutToTest.GetTotalPrice());
+            Assert.That(checkoutToTest.GetTotalPrice(), Is.EqualTo(5));
         }
 
         [Test]
@@ -218,7 +216,7 @@ namespace Checkout_Tests
             checkoutToTest.Scan("A");
             checkoutToTest.Scan("A");
 
-            Assert.AreEqual(7, checkoutToTest.GetTotalPrice());
+            Assert.That(checkoutToTest.GetTotalPrice(), Is.EqualTo(7));
         }
 
         [Test]
@@ -247,7 +245,7 @@ namespace Checkout_Tests
             checkoutToTest.Scan("A");
             checkoutToTest.Scan("A");
 
-            Assert.AreEqual(10, checkoutToTest.GetTotalPrice());
+            Assert.That(checkoutToTest.GetTotalPrice(), Is.EqualTo(10));
         }
 
         [Test]
@@ -297,7 +295,7 @@ namespace Checkout_Tests
             //4x B should cost: 90
             //2x C should cost: 40
             //3x D should cost: 45
-            Assert.AreEqual(405, checkoutToTest.GetTotalPrice());
+            Assert.That(checkoutToTest.GetTotalPrice(), Is.EqualTo(405));
         }
 
         //Might want to explicitly test more permutations but this should be good coverage to start
