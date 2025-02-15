@@ -7,11 +7,11 @@ public class MultiSpecialTests
     //Similar thoughts as SaleItem_Tests
 
     [Test]
-    public void CreateWithSKUAndPositiveQuantityAndPrice()
+    public void CreateWithSKUAndMultipleQuantityAndPrice()
     {
         MultiSpecial testMultispecial;
 
-        Assert.DoesNotThrow(() => testMultispecial = new MultiSpecial("ABC", 1, 99));
+        Assert.DoesNotThrow(() => testMultispecial = new MultiSpecial("ABC", 2, 99));
     }
 
     [Test]
@@ -23,10 +23,11 @@ public class MultiSpecialTests
     }
 
     [Test]
-    public void CreateWithZeroOrNegativeQuantity()
+    public void CreateWithSingularOrZeroOrNegativeQuantity()
     {
         MultiSpecial testMultispecial;
 
+        Assert.Throws<InvalidDataException>(() => testMultispecial = new MultiSpecial("ABC", 1, 99));
         Assert.Throws<InvalidDataException>(() => testMultispecial = new MultiSpecial("ABC", 0, 99));
         Assert.Throws<InvalidDataException>(() => testMultispecial = new MultiSpecial("ABC", -1, 99));
     }

@@ -33,9 +33,9 @@
                 throw new InvalidDataException("Null or Empty SKU for loaded special!");
             }
 
-            if (requiredQuantity < 1)
+            if (requiredQuantity < 2)
             {
-                throw new InvalidDataException("Zero or negative quantity for loaded special!");
+                throw new InvalidDataException("Singular, zero or negative quantity for loaded special!");
             }
 
             if (specialPrice < 1)
