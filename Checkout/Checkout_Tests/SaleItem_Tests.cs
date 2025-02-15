@@ -24,6 +24,7 @@ public class SaleItem_Tests
         Assert.Throws<InvalidDataException>(() => testItem = new SaleItem("", 99));
     }
 
+    //Assuming for now that we don't consider free a valid price - keeping as a separate case as we might want to just warn instead
     [Test]
     public void CreateWithZeroPrice()
     {

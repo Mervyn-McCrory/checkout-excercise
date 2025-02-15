@@ -28,6 +28,21 @@
         /// <param name="specialPrice">Special discounted price to apply to the qualified items</param>
         public MultiSpecial(string sku, int requiredQuantity, int specialPrice)
         {
+            if (String.IsNullOrEmpty(sku))
+            {
+                throw new InvalidDataException("Null or Empty SKU for loaded special!");
+            }
+
+            if (requiredQuantity < 1)
+            {
+                throw new InvalidDataException("Zero or negative quantity for loaded special!");
+            }
+
+            if (specialPrice < 1)
+            {
+                throw new InvalidDataException("Zero or negative price for loaded special!");
+            }
+
             SKU = sku;
             RequiredQuantity = requiredQuantity;
             SpecialPrice = specialPrice;

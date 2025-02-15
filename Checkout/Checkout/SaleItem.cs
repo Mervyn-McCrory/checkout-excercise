@@ -24,6 +24,16 @@
         /// <param name="price">Price to charge for each instance of the item</param>
         public SaleItem(string sku, int price)
         {
+            if (String.IsNullOrEmpty(sku))
+            {
+                throw new InvalidDataException("Null or Empty SKU for loaded item!");
+            }
+
+            if (price < 1)
+            {
+                throw new InvalidDataException("Zero or negative price for loaded item!");
+            }
+
             SKU = sku;
             Price = price;
         }

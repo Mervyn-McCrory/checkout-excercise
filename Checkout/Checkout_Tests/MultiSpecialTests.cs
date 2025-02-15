@@ -31,6 +31,7 @@ public class MultiSpecialTests
         Assert.Throws<InvalidDataException>(() => testMultispecial = new MultiSpecial("ABC", -1, 99));
     }
 
+    //Assuming for now that we don't consider free a valid price - keeping as a separate case as we might want to just warn instead
     [Test]
     public void CreateWithZeroPrice()
     {
