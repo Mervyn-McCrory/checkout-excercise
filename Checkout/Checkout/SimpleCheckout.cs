@@ -3,53 +3,12 @@
 namespace Checkout
 {
     /// <summary>
-    /// Very basic implementation of the Checkout interface, aims to do the bare minimum to satisfy requirements
+    /// Very basic implementation of the Checkout interface, aims to do the bare minimum to satisfy requirements - should become deprecated as newer versions are developed
     /// </summary>
-    public class SimpleCheckout : ICheckout
+    public class SimpleCheckout : BaseCheckout, ICheckout
     {
-        //Want a dictionary to easily index later
-        //Could store the itemdata directly OR just cross reference later via the identifier
-        private Dictionary<string, int> itemBasket;
-
-        internal Dictionary<string, SaleItem> ItemCatalogue { get; }
-
-        //Another dictionary makes sense right now for indexing on the basic approach but will probably be replaced later
-        internal Dictionary<string, MultiSpecial> AvailableSpecials { get; }
-
-        /// <summary>
-        /// Standard constructor, sets all fields
-        /// </summary>
-        /// <param name="itemCatalogue">Pricing data for all purchasable items</param>
-        /// <param name="availableSpecials">Details of all special deals available</param>
-        public SimpleCheckout(Dictionary<string, SaleItem> itemCatalogue, Dictionary<string, MultiSpecial> availableSpecials)
-        {
-            ItemCatalogue = itemCatalogue;
-            AvailableSpecials = availableSpecials;
-
-            itemBasket = new Dictionary<string, int>();
-        }
-
         /// <inheritdoc />
-        public void Scan(string itemSKU)
-        {
-            //If the item can be found in the catalogue then we know it's valid and we have data for it
-            if (ItemCatalogue.ContainsKey(itemSKU))
-            {
-                //Check if we already have an entry for this item and increment the qualtity if so
-                if (itemBasket.ContainsKey(itemSKU))
-                {
-                    itemBasket[itemSKU]++;
-                }
-                else
-                {
-                    itemBasket.Add(itemSKU, 1);
-                }
-            }
-            else
-            {
-                throw new WarningException(string.Format("Item with SKU '{0}' could not be found in the catalogue!", itemSKU));
-            }
-        }
+        public SimpleCheckout(Dictionary<string, SaleItem> itemCatalogue, Dictionary<string, MultiSpecial> availableSpecials) : base(itemCatalogue, availableSpecials) { }
 
         /// <inheritdoc />
         public int GetTotalPrice()
