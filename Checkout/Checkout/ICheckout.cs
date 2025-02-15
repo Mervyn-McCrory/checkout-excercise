@@ -22,6 +22,8 @@
         //While the excercise description suggests the pricing is to be represented in entire pounds, down the line it would probably make sense to consider them in pence as this can
         //represent more granular prices accurately without spending resources on floating point datatypes that are generally considered inappropriate for representing currency anyway
 
+        //Also limits what kind of insanely huge prices can be supported, anything realistic SHOULD fit in an int
+
         //How might this be expanded in future?
         //Modify quantity of item already in the basket? (including removal)
         //Apply a price override to an item in the basket?
